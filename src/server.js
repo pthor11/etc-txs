@@ -81,8 +81,11 @@ const run = async (blockNumber) => {
 const rollback = async () => {
     const lastTX = await TX.findOne({}, { _id: 0, blockNumber: 1 }).sort({ blockNumber: -1 })
     if (lastTX) {
-        await TX.deleteMany({ blockNumber : lastTX.blockNumber})
-        return Promise.resolve(blockNumber)
+        const blockNumber = lastTX.blockNumber
+        if (blockNumber) {
+            await TX.deleteMany({ blockNumber})
+            return Promise.resolve(blockNumber)
+        }
     } else {
         return Promise.resolve(0)
     }

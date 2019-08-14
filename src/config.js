@@ -12,10 +12,7 @@ const mongo = {
 }
 
 const etc = {
-    url: process.env.ETC_NODE_URL,
-    port: process.env.ETC_NODE_PORT,
-    username: process.env.ETC_NODE_USERNAME,
-    password: process.env.ETC_NODE_PASSWORD,
+    url: process.env.ETC_NODE_URL
 }
 
 export  {
